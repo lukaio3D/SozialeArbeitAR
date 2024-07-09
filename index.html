@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <a-scene webxr="optionalFeatures: dom-overlay; overlayElement: #overlay;">
+  <a-scene webxr="optionalFeatures: dom-overlay; overlayElement: #overlay;" xr-mode-ui="XRMode: xr">
     <a-assets>
       <a-asset-item id="klientGLB" src="src/Deepmotion_Cuttted_yes_default (1).glb"></a-asset-item>
       <audio id="klientVoiceWAV" src="src/deepmotionAudioVoice-enhanced-20p.mp3" preload="auto"></audio>
@@ -23,7 +23,7 @@
   </a-scene>
 
   <div id="overlay" class="w-screen h-screen flex justify-center">
-    <div id="ui00" class="bg-gray-300/80 rounded-lg p-2 place-self-end flex flex-col gap-2 justify-center align-center">
+    <div id="ui00" class="bg-gray-300/80 rounded-lg p-4 place-self-end flex flex-col gap-2 justify-center align-center">
       <p class=" text-xs">Starten Sie wenn Sie soweit sind</p>
       <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm" onclick="UI00()">Start</button>
     </div>
