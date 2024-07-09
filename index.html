@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soziale Arbeit XR</title>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <a-scene webxr="optionalFeatures: dom-overlay; overlayElement: #overlay;">
+    <a-assets>
+      <a-asset-item id="klientGLB" src="src/Deepmotion_Cuttted_yes_default (1).glb"></a-asset-item>
+      <audio id="klientVoiceWAV" src="src/deepmotionAudioVoice-enhanced-20p.mp3" preload="auto"></audio>
+    </a-assets>
+
+    <a-gltf-model id="klient" gltf-model="#klientGLB" position="0 0 -3" animation-mixer="loop: once; clampWhenFinished: true; timeScale: 0">
+    <a-sound id="klientVoice" src="#klientVoiceWAV" autoplay="false" position="0 2 5"></a-sound>
+    <a-sky color="#ECECEC"></a-sky>
+  </a-scene>
+
+  <div id="overlay" class="w-screen h-screen flex justify-center">
+    <div id="ui00" class="bg-gray-300/80 rounded-lg p-2 place-self-end flex flex-col gap-2 justify-center align-center">
+      <p class=" text-xs">Starten Sie wenn Sie soweit sind</p>
+      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm" onclick="UI00()">Start</button>
+    </div>
+    <div id="ui0" class="bg-gray-300/80 rounded-lg p-2 place-self-end flex flex-col gap-2 justify-center align-center hidden">
+      <p class=" text-xs">Begrüßen Sie Herrn Müller</p>
+      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="UI0()">"Hallo Herr Müller, schön dass Sie hier sind. Wie darf ich Ihnen weiterhelfen?"</button>
+    </div>
+    <div id="ui1" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+      <p class=" text-xs">Beschwichtigen Sie Herrn Müller</p>
+      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="UI1()">"Herr Müller, ich verstehe Ihre Situation und Ihren Ärger. Aber lassen Sie uns bitte in einem ruhigen Ton miteinander sprechen."</button>
+    </div>
+    <div id="ui2" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+      <p class=" text-xs">Wählen Sie die richtige Reaktion aus</p>
+      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="playAnimation()">"Herr Müller, beruhigen Sie sich bitte. Ich werde Ihnen helfen, aber ich kann mich nicht bedrohen lassen."</button>
+      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="pauseAnimation()">"Entschuldigen Sie, Herr Müller, aber ich fühle mich durch Ihr Verhalten bedroht. Wenn Sie sich nicht beruhigen können, muss ich das Gespräch leider abbrechen." </button>
+      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, ich verstehe Ihren Frust. Aber wir können gemeinsam nach einer Lösung suchen. Erzählen Sie mir bitte mehr über Ihre Situation."</button>
+      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, es tut mir leid, dass Sie so unter Druck stehen. Ich kann Ihnen aber versichern, dass ich alles in meiner Macht Stehende tun werde, um Ihnen zu helfen." </button>
+      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, ich habe den Eindruck, dass Sie gerade sehr viel Wut in sich tragen. Möchten Sie darüber sprechen?" </button>
+    </div>
+  </div>
+
+</body>
+<script>
+    const userInterface = document.getElementById("overlay");
+    const ui0 = document.getElementById("ui0");
+    const ui1 = document.getElementById("ui1");
+    const ui2 = document.getElementById("ui2");
+    const klientGLB = document.getElementById("klient");
+    const klientVoice = document.getElementById("klientVoiceWAV");
+
+    function playAnimation (){
+      userInterface.style.display = "none";
+      klientGLB.setAttribute("animation-mixer", {timeScale : 1});
+      klientVoice.play();
+    }
+    function pauseAnimation (){
+      userInterface.style.display = "flex";
+      klientGLB.setAttribute("animation-mixer", {timeScale : 0});
+      klientVoice.pause();
+    }
+
+    function UI00 (){
+      playAnimation();
+      ui00.style.display = "none";
+      ui0.style.display = "flex";
+      setTimeout(pauseAnimation, 4500)
+    }
+
+    function UI0 (){
+      playAnimation();
+      ui0.style.display = "none";
+      ui1.style.display = "flex";
+      setTimeout(pauseAnimation, 11000)
+    }
+
+    function UI1 (){
+      playAnimation();
+      ui1.style.display = "none";
+      ui2.style.display = "flex";
+      setTimeout(pauseAnimation, 9000)
+    }
+    
+
+
+</script>
+
+</html>
