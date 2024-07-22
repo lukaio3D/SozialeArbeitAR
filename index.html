@@ -22,27 +22,41 @@
     <a-sky hide-on-enter-ar color="#ECECEC"></a-sky>
   </a-scene>
 
-  <div id="overlay" class="w-screen h-screen flex justify-center">
-    <div id="ui00" class="bg-gray-300/80 rounded-lg p-4 place-self-end flex flex-col gap-2 justify-center align-center">
-      <p class=" text-xs">Starten Sie wenn Sie soweit sind</p>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm" onclick="UI00()">Start</button>
+  <div id="overlay" class="w-screen h-screen">
+    <div id="intro" class="fixed top-0 left-0 w-screen h-screen bg-gray-800 flex flex-col justify-center items-center p-8 gap-8">
+      <div class="flex flex-col justify-center gap-4">
+        <h1 class="text-white text-6xl">Willkommen bei der Soziale Arbeit AR Prüfung</h1>
+        <h3 class="text-white font-bold">Aufgaben Szenario</h3>
+        <p class="text-white w-1/2">
+          Sie arbeiten als Sozialarbeiter in einer Beratungsstelle für Menschen in schwierigen Lebenslagen. Heute haben Sie einen Termin mit Herrn Müller, der seit einiger Zeit arbeitslos ist und zunehmend frustriert und wütend ist. In den letzten Sitzungen zeigte er sich bereits mehrfach verbal aggressiv und drohte Ihnen an, die Beratungsstelle zu verlassen, wenn Sie ihm nicht sofort helfen könnten.
+        </p>
+        <button class="bg-gray-100 w-48 p-4 rounded">START</button>
+      </div>
     </div>
-    <div id="ui0" class="bg-gray-300/80 rounded-lg p-2 place-self-end flex flex-col gap-2 justify-center align-center hidden">
-      <p class=" text-xs">Begrüßen Sie Herrn Müller</p>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="UI0()">"Hallo Herr Müller, schön dass Sie hier sind. Wie darf ich Ihnen weiterhelfen?"</button>
+
+    <div id="3DsceneUI" class="flex justify-center hidden">
+      <div id="ui00" class="bg-gray-300/80 rounded-lg p-4 place-self-end flex flex-col gap-2 justify-center content-center">
+        <p class=" text-xs">Starten Sie wenn Sie soweit sind</p>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm" onclick="UI00()">Start</button>
+      </div>
+      <div id="ui0" class="bg-gray-300/80 rounded-lg p-2 place-self-end flex flex-col gap-2 justify-center align-center hidden">
+        <p class=" text-xs">Begrüßen Sie Herrn Müller</p>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="UI0()">"Hallo Herr Müller, schön dass Sie hier sind. Wie darf ich Ihnen weiterhelfen?"</button>
+      </div>
+      <div id="ui1" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+        <p class=" text-xs">Beschwichtigen Sie Herrn Müller</p>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="UI1()">"Herr Müller, ich verstehe Ihre Situation und Ihren Ärger. Aber lassen Sie uns bitte in einem ruhigen Ton miteinander sprechen."</button>
+      </div>
+      <div id="ui2" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+        <p class=" text-xs">Wählen Sie die richtige Reaktion aus</p>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="playAnimation()">"Herr Müller, beruhigen Sie sich bitte. Ich werde Ihnen helfen, aber ich kann mich nicht bedrohen lassen."</button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="pauseAnimation()">"Entschuldigen Sie, Herr Müller, aber ich fühle mich durch Ihr Verhalten bedroht. Wenn Sie sich nicht beruhigen können, muss ich das Gespräch leider abbrechen." </button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, ich verstehe Ihren Frust. Aber wir können gemeinsam nach einer Lösung suchen. Erzählen Sie mir bitte mehr über Ihre Situation."</button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, es tut mir leid, dass Sie so unter Druck stehen. Ich kann Ihnen aber versichern, dass ich alles in meiner Macht Stehende tun werde, um Ihnen zu helfen." </button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, ich habe den Eindruck, dass Sie gerade sehr viel Wut in sich tragen. Möchten Sie darüber sprechen?" </button>
+      </div>
     </div>
-    <div id="ui1" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
-      <p class=" text-xs">Beschwichtigen Sie Herrn Müller</p>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="UI1()">"Herr Müller, ich verstehe Ihre Situation und Ihren Ärger. Aber lassen Sie uns bitte in einem ruhigen Ton miteinander sprechen."</button>
-    </div>
-    <div id="ui2" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
-      <p class=" text-xs">Wählen Sie die richtige Reaktion aus</p>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="playAnimation()">"Herr Müller, beruhigen Sie sich bitte. Ich werde Ihnen helfen, aber ich kann mich nicht bedrohen lassen."</button>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="pauseAnimation()">"Entschuldigen Sie, Herr Müller, aber ich fühle mich durch Ihr Verhalten bedroht. Wenn Sie sich nicht beruhigen können, muss ich das Gespräch leider abbrechen." </button>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, ich verstehe Ihren Frust. Aber wir können gemeinsam nach einer Lösung suchen. Erzählen Sie mir bitte mehr über Ihre Situation."</button>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, es tut mir leid, dass Sie so unter Druck stehen. Ich kann Ihnen aber versichern, dass ich alles in meiner Macht Stehende tun werde, um Ihnen zu helfen." </button>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm">"Herr Müller, ich habe den Eindruck, dass Sie gerade sehr viel Wut in sich tragen. Möchten Sie darüber sprechen?" </button>
-    </div>
+
   </div>
 
 </body>
