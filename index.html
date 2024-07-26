@@ -17,7 +17,7 @@
       <audio id="klientVoiceWAV" src="src/deepmotionAudioVoice-enhanced-20p.mp3" preload="auto"></audio>
     </a-assets>
 
-    <a-gltf-model id="klient" gltf-model="#klientGLB" position="0 0 -3" animation-mixer="loop: once; clampWhenFinished: true; timeScale: 0">
+    <a-gltf-model id="klient" gltf-model="#klientGLB" position="0 0 -3.5" animation-mixer="loop: once; clampWhenFinished: true; timeScale: 0">
     <a-sound id="klientVoice" src="#klientVoiceWAV" autoplay="false" position="0 2 5"></a-sound>
     <a-sky hide-on-enter-ar color="#ECECEC"></a-sky>
   </a-scene>
@@ -30,11 +30,11 @@
         <p class="text-white w-1/2">
           Sie arbeiten als Sozialarbeiter in einer Beratungsstelle für Menschen in schwierigen Lebenslagen. Heute haben Sie einen Termin mit Herrn Müller, der seit einiger Zeit arbeitslos ist und zunehmend frustriert und wütend ist. In den letzten Sitzungen zeigte er sich bereits mehrfach verbal aggressiv und drohte Ihnen an, die Beratungsstelle zu verlassen, wenn Sie ihm nicht sofort helfen könnten.
         </p>
-        <button class="bg-gray-100 w-48 p-4 rounded">START</button>
+        <button class="bg-gray-100 w-48 p-4 rounded" onclick="StartApp()">START</button>
       </div>
     </div>
 
-    <div id="3DsceneUI" class="flex justify-center hidden">
+    <div id="3DsceneUI" class="w-full h-full justify-center hidden">
       <div id="ui00" class="bg-gray-300/80 rounded-lg p-4 place-self-end flex flex-col gap-2 justify-center content-center">
         <p class=" text-xs">Starten Sie wenn Sie soweit sind</p>
         <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm" onclick="UI00()">Start</button>
@@ -62,6 +62,8 @@
 </body>
 <script>
     const userInterface = document.getElementById("overlay");
+    const uiIntro = document.getElementById("intro");
+    const ui3D = document.getElementById("3DsceneUI");
     const ui0 = document.getElementById("ui0");
     const ui1 = document.getElementById("ui1");
     const ui2 = document.getElementById("ui2");
@@ -77,6 +79,11 @@
       userInterface.style.display = "flex";
       klientGLB.setAttribute("animation-mixer", {timeScale : 0});
       klientVoice.pause();
+    }
+
+    function StartApp (){
+      uiIntro.style.display = "none";
+      ui3D.style.display = "flex";
     }
 
     function UI00 (){
