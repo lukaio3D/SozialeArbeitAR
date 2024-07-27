@@ -19,80 +19,117 @@
     </a-assets>
 
     <a-entity camera look-controls position="0 1.6 0"></a-entity>
-    <a-gltf-model id="klient" gltf-model="#klientGLB" position="0 0 -3.5" animation-mixer="loop: once; clampWhenFinished: true; timeScale: 0">
-    <a-sound id="klientVoice" src="#klientVoiceWAV" autoplay="false" position="0 2 5"></a-sound>
-    <a-sky hide-on-enter-ar src="#street360" color="#ECECEC"></a-sky>
+    <a-gltf-model id="klient" gltf-model="#klientGLB" position="0 0 -3.5"
+      animation-mixer="loop: once; clampWhenFinished: true; timeScale: 0">
+      <a-sound id="klientVoice" src="#klientVoiceWAV" autoplay="false" position="0 2 5"></a-sound>
+      <a-sky hide-on-enter-ar src="#street360" color="#ECECEC"></a-sky>
   </a-scene>
 
   <div class="fixed top-4 left-4 z-10">
     <img class="h-8 xl:h-16" src="src/240727_Logo_2024.png" alt="">
   </div>
 
-  <div id="intro" class="fixed top-0 left-0 w-screen h-[100vh] bg-gray-800 flex flex-col justify-center items-center p-8 gap-8 ">
+  <div id="intro"
+    class="fixed top-0 left-0 w-screen h-[100vh] bg-gray-800 flex flex-col justify-center items-center p-8 gap-8 ">
     <div class="flex flex-col justify-center gap-4">
       <h1 class="text-white text-xl xl:text-6xl">Willkommen <br> Demo für eine <br> Soziale Arbeit XR Prüfung</h1>
       <h3 class="text-white font-bold">Aufgaben Szenario</h3>
       <p class="text-white xl:w-1/2">
-        Sie arbeiten als Sozialarbeiter in einer Beratungsstelle für Menschen in schwierigen Lebenslagen. Heute haben Sie einen Termin mit Herrn Müller, der seit einiger Zeit arbeitslos ist und zunehmend frustriert und wütend ist. In den letzten Sitzungen zeigte er sich bereits mehrfach verbal aggressiv und drohte Ihnen an, die Beratungsstelle zu verlassen, wenn Sie ihm nicht sofort helfen könnten.
+        Sie arbeiten als Sozialarbeiter in einer Beratungsstelle für Menschen in schwierigen Lebenslagen. Heute haben
+        Sie einen Termin mit Herrn Müller, der seit einiger Zeit arbeitslos ist und zunehmend frustriert und wütend ist.
+        In den letzten Sitzungen zeigte er sich bereits mehrfach verbal aggressiv und drohte Ihnen an, die
+        Beratungsstelle zu verlassen, wenn Sie ihm nicht sofort helfen könnten.
       </p>
       <button class="bg-gray-100 w-48 p-4 rounded" onclick="StartApp()">START</button>
-      <p class="text-white text-xs">Hinweis: Die Inhalte für dieses Beispiel wurde mit Google Gemini KI erzeugt. Zweck der Anwendung ist den möglichen Einsatz von WebXR zu demonstrieren. Eine fachliche Überprüfung der Inhalte hat nicht stattgefunden.</p>
+      <p class="text-white text-xs">Hinweis: Die Inhalte für dieses Beispiel wurde mit Google Gemini KI erzeugt. Zweck
+        der Anwendung ist den möglichen Einsatz von WebXR zu demonstrieren. Eine fachliche Überprüfung der Inhalte hat
+        nicht stattgefunden.</p>
     </div>
   </div>
 
   <div id="overlay" class="w-screen h-[100vh]">
 
     <div id="3DsceneUI" class="w-full h-full justify-center hidden">
-      <div id="ui00" class="bg-gray-300/80 rounded-lg p-4 place-self-end flex flex-col gap-2 justify-center content-center ">
+      <div id="ui00"
+        class="bg-gray-300/80 rounded-lg p-4 place-self-end flex flex-col gap-2 justify-center content-center ">
         <p class=" text-xs">Starten Sie wenn Sie bereit sind</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm" onclick="UI00()">Start</button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm"
+          onclick="UI00()">Start</button>
       </div>
-      <div id="ui0" class="bg-gray-300/80 rounded-lg p-2 place-self-end flex flex-col gap-2 justify-center align-center hidden">
+      <div id="ui0"
+        class="bg-gray-300/80 rounded-lg p-2 place-self-end flex flex-col gap-2 justify-center align-center hidden">
         <p class=" text-xs">Begrüßen Sie Herrn Müller</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="UI0()">"Hallo Herr Müller, schön dass Sie hier sind. Wie darf ich Ihnen weiterhelfen?"</button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm"
+          onclick="UI0()">"Hallo Herr Müller, schön dass Sie hier sind. Wie darf ich Ihnen weiterhelfen?"</button>
       </div>
-      <div id="ui1" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+      <div id="ui1"
+        class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
         <p class=" text-xs">Beschwichtigen Sie Herrn Müller</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="UI1()">"Herr Müller, ich verstehe Ihre Situation und Ihren Ärger. Aber lassen Sie uns bitte in einem ruhigen Ton miteinander sprechen."</button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm"
+          onclick="UI1()">"Herr Müller, ich verstehe Ihre Situation und Ihren Ärger. Aber lassen Sie uns bitte in einem
+          ruhigen Ton miteinander sprechen."</button>
       </div>
-      <div id="ui2" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+      <div id="ui2"
+        class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
         <p class=" text-xs">Wählen Sie die richtige Reaktion aus</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="Antwort1()">"Herr Müller, beruhigen Sie sich bitte. Ich werde Ihnen helfen, aber ich kann mich nicht bedrohen lassen."</button>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="Antwort2()">"Entschuldigen Sie, Herr Müller, aber ich fühle mich durch Ihr Verhalten bedroht. Wenn Sie sich nicht beruhigen können, muss ich das Gespräch leider abbrechen." </button>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="Antwort3()">"Herr Müller, ich verstehe Ihren Frust. Aber wir können gemeinsam nach einer Lösung suchen. Erzählen Sie mir bitte mehr über Ihre Situation."</button>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm" onclick="Antwort4()">"Herr Müller, es tut mir leid, dass Sie so unter Druck stehen. Ich kann Ihnen aber versichern, dass ich alles in meiner Macht Stehende tun werde, um Ihnen zu helfen." </button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm"
+          onclick="Antwort1()">"Herr Müller, beruhigen Sie sich bitte. Ich werde Ihnen helfen, aber ich kann mich nicht
+          bedrohen lassen."</button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm"
+          onclick="Antwort2()">"Entschuldigen Sie, Herr Müller, aber ich fühle mich durch Ihr Verhalten bedroht. Wenn
+          Sie sich nicht beruhigen können, muss ich das Gespräch leider abbrechen." </button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm"
+          onclick="Antwort3()">"Herr Müller, ich verstehe Ihren Frust. Aber wir können gemeinsam nach einer Lösung
+          suchen. Erzählen Sie mir bitte mehr über Ihre Situation."</button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg text-left text-sm"
+          onclick="Antwort4()">"Herr Müller, es tut mir leid, dass Sie so unter Druck stehen. Ich kann Ihnen aber
+          versichern, dass ich alles in meiner Macht Stehende tun werde, um Ihnen zu helfen." </button>
       </div>
 
-      <div id="uiAuswertung1" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+      <div id="uiAuswertung1"
+        class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
         <h3 class=" text-xs ">Auswertung Ihrer Antwort</h3>
         <h4 class="text-red-500 ">Das ist falsch!</h4>
-        <p class="text-left text-sm pb-2">Diese Option ist zwar höflich, aber sie wirkt nicht konsequent genug und könnte Herrn Müller in seinem aggressiven Verhalten bestärken.</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2" onclick="zurueckVonAuswertung()">Zurück </button>
+        <p class="text-left text-sm pb-2">Diese Option ist zwar höflich, aber sie wirkt nicht konsequent genug und
+          könnte Herrn Müller in seinem aggressiven Verhalten bestärken.</p>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2"
+          onclick="zurueckVonAuswertung()">Zurück </button>
       </div>
 
-      <div id="uiAuswertung2" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+      <div id="uiAuswertung2"
+        class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
         <h3 class=" text-xs ">Auswertung Ihrer Antwort</h3>
         <h4 class="text-green-700 ">Das ist richtig!</h4>
         <ul>
-          <li class="text-left text-sm py-1"><strong>Deeskalation:</strong>  In dieser angespannten Situation ist es wichtig, die Situation zu deeskalieren und Herr Müller zu zeigen, dass Sie sich nicht bedrohen lassen.</li>
-          <li class="text-left text-sm py-1"><strong>Grenzen setzen:</strong> Grenzen setzen: Sie müssen Herrn Müller klar und deutlich Ihre Grenzen setzen und ihm zeigen, dass Sie sich nicht respektlos behandeln lassen.</li>
-          <li class="text-left text-sm py-1"><strong>Professionelles Auftreten:</strong> Es ist wichtig, dass Sie auch in dieser schwierigen Situation professionell bleiben und die Kontrolle über das Gespräch behalten.</li>
+          <li class="text-left text-sm py-1"><strong>Deeskalation:</strong> In dieser angespannten Situation ist es
+            wichtig, die Situation zu deeskalieren und Herr Müller zu zeigen, dass Sie sich nicht bedrohen lassen.</li>
+          <li class="text-left text-sm py-1"><strong>Grenzen setzen:</strong> Grenzen setzen: Sie müssen Herrn Müller
+            klar und deutlich Ihre Grenzen setzen und ihm zeigen, dass Sie sich nicht respektlos behandeln lassen.</li>
+          <li class="text-left text-sm py-1"><strong>Professionelles Auftreten:</strong> Es ist wichtig, dass Sie auch
+            in dieser schwierigen Situation professionell bleiben und die Kontrolle über das Gespräch behalten.</li>
         </ul>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2" onclick="zurueckVonAuswertung()">Zurück </button>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2"
+          onclick="zurueckVonAuswertung()">Zurück </button>
       </div>
 
-      <div id="uiAuswertung3" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+      <div id="uiAuswertung3"
+        class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
         <h3 class=" text-xs ">Auswertung Ihrer Antwort</h3>
         <h4 class="text-red-500 ">Das ist falsch!</h4>
-        <p class="text-left text-sm pb-2">Diese Option ist zwar gut gemeint, aber sie könnte Herrn Müller in seiner Opferrolle bestärken und ihn davon abhalten, Eigenverantwortung zu übernehmen.</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2" onclick="zurueckVonAuswertung()">Zurück </button>
+        <p class="text-left text-sm pb-2">Diese Option ist zwar gut gemeint, aber sie könnte Herrn Müller in seiner
+          Opferrolle bestärken und ihn davon abhalten, Eigenverantwortung zu übernehmen.</p>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2"
+          onclick="zurueckVonAuswertung()">Zurück </button>
       </div>
 
-      <div id="uiAuswertung4" class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
+      <div id="uiAuswertung4"
+        class="bg-gray-300/80 rounded-lg p-2 place-self-end  flex-col gap-2 justify-center align-center hidden">
         <h3 class=" text-xs ">Auswertung Ihrer Antwort</h3>
         <h4 class="text-red-500 ">Das ist falsch!</h4>
-        <p class="text-left text-sm pb-2">Diese Option ist zwar freundlich, aber sie könnte Herrn Müller in seinen unrealistischen Erwartungen bestärken.</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2" onclick="zurueckVonAuswertung()">Zurück </button>
+        <p class="text-left text-sm pb-2">Diese Option ist zwar freundlich, aber sie könnte Herrn Müller in seinen
+          unrealistischen Erwartungen bestärken.</p>
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2"
+          onclick="zurueckVonAuswertung()">Zurück </button>
       </div>
 
     </div>
@@ -101,80 +138,86 @@
 
 </body>
 <script>
-    const userInterface = document.getElementById("overlay");
-    const uiIntro = document.getElementById("intro");
-    const ui3D = document.getElementById("3DsceneUI");
-    const ui0 = document.getElementById("ui0");
-    const ui1 = document.getElementById("ui1");
-    const ui2 = document.getElementById("ui2");
-    const uiAuswertung1 = document.getElementById("uiAuswertung1")
-    const klientGLB = document.getElementById("klient");
-    const klientVoice = document.getElementById("klientVoiceWAV");
+  const userInterface = document.getElementById("overlay");
+  const uiIntro = document.getElementById("intro");
+  const ui3D = document.getElementById("3DsceneUI");
+  const ui0 = document.getElementById("ui0");
+  const ui1 = document.getElementById("ui1");
+  const ui2 = document.getElementById("ui2");
+  const uiAuswertung1 = document.getElementById("uiAuswertung1")
+  const klientGLB = document.getElementById("klient");
+  const klientVoice = document.getElementById("klientVoiceWAV");
 
-    function playAnimation (){
-      userInterface.style.display = "none";
-      klientGLB.setAttribute("animation-mixer", {timeScale : 1});
-      klientVoice.play();
-    }
-    function pauseAnimation (){
-      userInterface.style.display = "flex";
-      klientGLB.setAttribute("animation-mixer", {timeScale : 0});
-      klientVoice.pause();
-    }
+  function playAnimation() {
+    userInterface.style.display = "none";
+    klientGLB.setAttribute("animation-mixer", { timeScale: 1 });
+    klientVoice.play();
+  }
+  function pauseAnimation() {
+    userInterface.style.display = "flex";
+    klientGLB.setAttribute("animation-mixer", { timeScale: 0 });
+    klientVoice.pause();
+  }
 
-    function StartApp (){
-      uiIntro.style.display = "none";
-      ui3D.style.display = "flex";
-    }
+  function StartApp() {
+    uiIntro.style.display = "none";
+    ui3D.style.display = "flex";
+  }
 
-    function UI00 (){
-      playAnimation();
-      ui00.style.display = "none";
-      setTimeout(pauseAnimation, 4500);
+  function UI00() {
+    playAnimation();
+    ui00.style.display = "none";
+    setTimeout(function () {
+      pauseAnimation();
       ui0.style.display = "flex";
-    }
+    }, 4500);
+  }
 
-    function UI0 (){
-      playAnimation();
-      ui0.style.display = "none";
-      setTimeout(pauseAnimation, 11000);
+  function UI0() {
+    playAnimation();
+    ui0.style.display = "none";
+    setTimeout(function () {
+      pauseAnimation();
       ui1.style.display = "flex";
-    }
+    }, 11000);
+  }
 
-    function UI1 (){
-      playAnimation();
-      ui1.style.display = "none";
-      setTimeout(pauseAnimation, 9000)
+  function UI1() {
+    playAnimation();
+    ui1.style.display = "none";
+    setTimeout(function () {
+      pauseAnimation();
       ui2.style.display = "flex";
-    }
-    
-    function Antwort1 (){
-      uiAuswertung1.style.display = "flex";
-      ui2.style.display = "none";
-    }
+    }, 9000)
+  }
 
-    function Antwort2 (){
-      uiAuswertung2.style.display = "flex";
-      ui2.style.display = "none";
-    }
+  function Antwort1() {
+    uiAuswertung1.style.display = "flex";
+    ui2.style.display = "none";
+  }
 
-    function Antwort3 (){
-      uiAuswertung3.style.display = "flex";
-      ui2.style.display = "none";
-    }
+  function Antwort2() {
+    uiAuswertung2.style.display = "flex";
+    ui2.style.display = "none";
+  }
 
-    function Antwort4 (){
-      uiAuswertung4.style.display = "flex";
-      ui2.style.display = "none";
-    }
+  function Antwort3() {
+    uiAuswertung3.style.display = "flex";
+    ui2.style.display = "none";
+  }
 
-    function zurueckVonAuswertung(){
-      ui2.style.display = "flex";
-      uiAuswertung1.style.display = "none";
-      uiAuswertung2.style.display = "none";
-      uiAuswertung3.style.display = "none";
-      uiAuswertung4.style.display = "none";
-    }
+  function Antwort4() {
+    uiAuswertung4.style.display = "flex";
+    ui2.style.display = "none";
+  }
+
+  function zurueckVonAuswertung() {
+    ui2.style.display = "flex";
+    uiAuswertung1.style.display = "none";
+    uiAuswertung2.style.display = "none";
+    uiAuswertung3.style.display = "none";
+    uiAuswertung4.style.display = "none";
+  }
 
 
 </script>
