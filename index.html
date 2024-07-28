@@ -18,14 +18,14 @@
       <audio id="klientVoiceWAV" src="src/deepmotionAudioVoice-enhanced-20p.mp3" preload="auto"></audio>
     </a-assets>
 
-    <a-entity camera look-controls position="0 1.6 0"></a-entity>
-    <a-gltf-model id="klient" gltf-model="#klientGLB" position="0 0 -3.5"
+    <a-camera camera look-controls position="0 1.6 0" fov="50" wasd-controls-enabled="false"></a-camera>
+    <a-gltf-model id="klient" gltf-model="#klientGLB" position="0 0 -4"
       animation-mixer="loop: once; clampWhenFinished: true; timeScale: 0">
       <a-sound id="klientVoice" src="#klientVoiceWAV" autoplay="false" position="0 2 5"></a-sound>
       <a-sky hide-on-enter-ar src="#street360" color="#ECECEC"></a-sky>
   </a-scene>
 
-  <div class="fixed top-4 left-8 z-10">
+  <div class="fixed top-4 left-8 z-20">
     <img class="h-6 xl:h-12" src="src/240727_Logo_2024_dark.png" alt="">
   </div>
 
@@ -41,12 +41,7 @@
         In den letzten Sitzungen zeigte er sich bereits mehrfach verbal aggressiv und drohte Ihnen, wenn Sie ihm nicht
         sofort helfen könnten.
       </p>
-      <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-4 w-24 rounded" onclick="StartApp()">START</button>
-      <!-- <p class="text-white text-xs">Hinweis: <br> Die Inhalte für dieses Beispiel wurde mit Google Gemini KI erzeugt.
-        <br> Zweck
-        der Anwendung ist den möglichen Einsatz von WebXR zu demonstrieren. <br> Eine fachliche Überprüfung der Inhalte
-        hat
-        nicht stattgefunden.</p> -->
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-4 w-24 rounded" onclick="StartApp()">START</button>
       <div class="fixed bottom-4 left-4">
         <a href="impressum.html" id="impressumButton" class=" p-2 px-5 rounded-xl text-xs text-gray-100">
           Impressum
@@ -59,8 +54,9 @@
   </div>
 
   <div id="outro"
-  class="fixed top-0 left-0 w-screen h-[100vh] bg-gray-900 flex flex-col justify-center p-8 gap-8 hidden">
+  class="fixed top-0 left-0 w-screen h-[100vh] bg-gray-900 flex flex-col justify-center p-8 gap-8 hidden z-10">
   <div class="flex flex-col xl:w-1/2 xl:pl-16 justify-center gap-6 ">
+    <h1 class="text-white text-xl xl:text-4xl">Sehr gut gemacht!</h1>
     <h1 class="text-white text-xl xl:text-4xl">Hat diese WebXR Demo Ihr Interesse geweckt?</h1>
     <h1 class="text-white text-xl xl:text-4xl">Haben Sie eigene Ideen, die Sie umsetzen möchten?</h1>
     <h1 class="text-white text-xl xl:text-4xl">Kontaktieren Sie mich und wir finden die für Sie beste Lösung!</h1>
@@ -123,7 +119,7 @@
         <h4 class="text-red-500 ">Das ist falsch!</h4>
         <p class="text-left text-sm pb-2">Diese Option ist zwar höflich, aber sie wirkt nicht konsequent genug und
           könnte Herrn Müller in seinem aggressiven Verhalten bestärken.</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2"
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2 w-24"
           onclick="zurueckVonAuswertung()">Zurück </button>
       </div>
 
@@ -139,8 +135,13 @@
           <li class="text-left text-sm py-1"><strong>Professionelles Auftreten:</strong> Es ist wichtig, dass Sie auch
             in dieser schwierigen Situation professionell bleiben und die Kontrolle über das Gespräch behalten.</li>
         </ul>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2"
+        <div class="flex gap-4">
+          <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2 w-24"
           onclick="zurueckVonAuswertung()">Zurück </button>
+          <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2 w-48"
+          onclick="zumOutro()">Anwendung abschließen</button>
+        </div>
+
       </div>
 
       <div id="uiAuswertung3"
@@ -149,7 +150,7 @@
         <h4 class="text-red-500 ">Das ist falsch!</h4>
         <p class="text-left text-sm pb-2">Diese Option ist zwar gut gemeint, aber sie könnte Herrn Müller in seiner
           Opferrolle bestärken und ihn davon abhalten, Eigenverantwortung zu übernehmen.</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2"
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2 w-24"
           onclick="zurueckVonAuswertung()">Zurück </button>
       </div>
 
@@ -159,7 +160,7 @@
         <h4 class="text-red-500 ">Das ist falsch!</h4>
         <p class="text-left text-sm pb-2">Diese Option ist zwar freundlich, aber sie könnte Herrn Müller in seinen
           unrealistischen Erwartungen bestärken.</p>
-        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2"
+        <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 rounded-lg text-left text-sm p-2 w-24"
           onclick="zurueckVonAuswertung()">Zurück </button>
       </div>
 
@@ -171,6 +172,7 @@
 <script>
   const userInterface = document.getElementById("overlay");
   const uiIntro = document.getElementById("intro");
+  const uiOutro = document.getElementById("outro");
   const ui3D = document.getElementById("3DsceneUI");
   const ui0 = document.getElementById("ui0");
   const ui1 = document.getElementById("ui1");
@@ -248,6 +250,9 @@
     uiAuswertung4.style.display = "none";
   }
 
+  function zumOutro(){
+    outro.style.display = "flex"
+  }
 
 </script>
 
