@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <a-scene webxr="optionalFeatures: dom-overlay; overlayElement: #overlay;" xr-mode-ui="XRMode: ar">
+  <a-scene webxr="optionalFeatures: dom-overlay; overlayElement: #overlay;" xr-mode-ui="XRMode: ar; enterARButton: #ARButton">
     <a-assets>
       <img id="street360" src="src/NightEnvironmentHDRI002_4K-TONEMAPPED.jpg">
       <a-asset-item id="klientGLB" src="src/Deepmotion_Cuttted_yes_default (1).glb"></a-asset-item>
@@ -30,38 +30,33 @@
   </div>
 
   <div id="intro"
-    class="fixed top-0 left-0 w-screen h-[100vh] bg-gray-900 flex flex-col justify-center items-center p-8 gap-8 ">
-    <div class="flex flex-col xl:w-1/2 justify-center gap-4">
+    class="fixed top-0 left-0 w-screen h-[100vh] bg-gray-900 flex flex-col justify-center p-8 gap-8 ">
+    <div class="flex flex-col xl:w-1/2 xl:pl-16 justify-center gap-4 overflow-auto">
       <h1 class="text-white text-2xl xl:text-4xl font-bold">Soziale Arbeit XR Prüfung (DEMO)</h1>
-      <h3 class="text-white font-bold">Aufgaben Szenario</h3>
+      <h3 class="text-white font-bold">Prüfungsszenario</h3>
       <p class="text-white">
-        Sie arbeiten als Sozialarbeiter in einer Beratungsstelle für Menschen in schwierigen Lebenslagen. <br> 
-        Heute treffen Sie Herrn Müller, der seit einiger Zeit arbeitslos ist und zunehmend frustriert und wütend auftritt. <br>
-        In den letzten Sitzungen zeigte er sich bereits mehrfach verbal aggressiv und drohte Ihnen, wenn Sie ihm nicht sofort helfen könnten.
+        Sie arbeiten als Sozialarbeiter in einer Beratungsstelle für Menschen in schwierigen Lebenslagen. <br>
+        Heute treffen Sie Herrn Müller, der seit einiger Zeit arbeitslos ist und zunehmend frustriert und wütend
+        auftritt. <br>
+        In den letzten Sitzungen zeigte er sich bereits mehrfach verbal aggressiv und drohte Ihnen, wenn Sie ihm nicht
+        sofort helfen könnten.
       </p>
-      <button class="bg-gray-100 p-4 rounded" onclick="StartApp()">START</button>
-      <p class="text-white text-xs">Hinweis: <br> Die Inhalte für dieses Beispiel wurde mit Google Gemini KI erzeugt. <br> Zweck
-        der Anwendung ist den möglichen Einsatz von WebXR zu demonstrieren. <br> Eine fachliche Überprüfung der Inhalte hat
-        nicht stattgefunden.</p>
+      <button class="bg-gray-100 p-4 w-24 rounded" onclick="StartApp()">START</button>
+      <!-- <p class="text-white text-xs">Hinweis: <br> Die Inhalte für dieses Beispiel wurde mit Google Gemini KI erzeugt.
+        <br> Zweck
+        der Anwendung ist den möglichen Einsatz von WebXR zu demonstrieren. <br> Eine fachliche Überprüfung der Inhalte
+        hat
+        nicht stattgefunden.</p> -->
+      <div class="fixed bottom-4 left-4">
+        <a href="impressum.html" id="impressumButton" class=" p-2 px-5 rounded-xl text-xs text-gray-100">
+          Impressum
+        </a>
+        <a href="datenschutz.html" id="datenschutzButton" class=" p-2 px-5 rounded-xl text-xs text-gray-100">
+          Datenschutz
+        </a>
+      </div>
     </div>
-    <div class="fixed bottom-4 left-4">
-      <a
-      href="impressum.html"
-      target="_blank"
-      id="impressumButton"
-      class=" p-2 px-5 rounded-xl  text-gray-100"
-    >
-      Impressum
-    </a>
-    <a
-    href="impressum.html"
-    target="_blank"
-    id="datenschutzButton"
-    class=" p-2 px-5 rounded-xl  text-gray-100"
-  >
-    Datenschutz
-  </a>
-    </div>
+
 
   </div>
 
@@ -73,6 +68,8 @@
         <p class=" text-xs">Starten Sie wenn Sie bereit sind</p>
         <button class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm"
           onclick="UI00()">Start</button>
+          <button id="ARButton" class="bg-gray-100 hover:bg-gray-200 active:bg-gray-300 p-2 rounded-lg  text-sm"
+          >AR</button>
       </div>
       <div id="ui0"
         class="bg-gray-300/80 rounded-lg p-2 place-self-end flex flex-col gap-2 justify-center align-center hidden">
